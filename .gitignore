@@ -1,2 +1,5 @@
 __pycache__/
 *.csv
+tests/local_tests.py
+local_config.py
+unique.py
