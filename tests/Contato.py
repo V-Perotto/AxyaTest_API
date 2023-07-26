@@ -1,4 +1,7 @@
 import requests
+from logger.Logger import Logger
+
+logger = Logger()
 
 class Contato:
     
@@ -18,12 +21,12 @@ class Contato:
         response = requests.post(url, json=dados)
 
         if response.status_code == 201 or response.status_code == 200:
-            print('Contato criado com sucesso!')
+            logger.log_info('Contato criado com sucesso!', status=response.status_code, response=response.json())
             return response.json()
         elif response.status_code == 404:
-            print('Contato não criado.')
+            logger.log_error('Contato não criado.', status=response.status_code, response=response.json())
         else:
-            print('Erro ao criar o contato:', response.json())
+            logger.log_critical('Erro ao criar o contato', status=response.status_code, response=response.json())
 
     def read_contato(self, ID: int):
         """Read - Contato
@@ -35,11 +38,11 @@ class Contato:
         response = requests.get(url, json={"ID": ID})
 
         if response.status_code == 200:
-            print(f'Contato lido com sucesso!\n{response.json()}')
+            logger.log_info("Contato lido com sucesso!", status=response.status_code, response=response.json())
         elif response.status_code == 404:
-            print('Contato não encontrado.')
+            logger.log_error('Contato não encontrado.', status=response.status_code, response=response.json())
         else:
-            print(f'Erro ao ler o contato:\n{response.json()}')
+            logger.log_critical("Erro ao ler o contato", status=response.status_code, response=response.json())
 
     def update_contato(self, ID: int, dados: dict):
         """Update - Contato
@@ -56,12 +59,12 @@ class Contato:
         response = requests.put(url, json=dados)
 
         if response.status_code == 200:
-            print('Contato atualizado com sucesso!')
+            logger.log_info('Contato atualizado com sucesso!', status=response.status_code, response=response.json())
             return response.json()
         elif response.status_code == 404:
-            print('Contato não encontrado.')
+            logger.log_error('Contato não encontrado.', status=response.status_code, response=response.json())
         else:
-            print(f'Erro ao atualizar o contato:\n{response.json()}')
+            logger.log_critical("Erro ao atualizar o contato", status=response.status_code, response=response.json())
 
     def delete_contato(self, ID: int):
         """Delete - Contato
@@ -76,12 +79,12 @@ class Contato:
         response = requests.delete(url, json={"ID": ID})
 
         if response.status_code == 200:
-            print('Contato deletado com sucesso!')
+            logger.log_info('Contato deletado com sucesso!', status=response.status_code, response=response.json())
             return response.json()
         elif response.status_code == 404:
-            print('Contato não deletado.')
+            logger.log_error('Contato não deletado.', status=response.status_code, response=response.json())
         else:
-            print(f'Erro ao deletar o contato:\n{response.json()}')
+            logger.log_critical("Erro ao deletar o contato", status=response.status_code, response=response.json())
 
     def search_contato(self, nome: str):
         """Search - Contato
@@ -96,9 +99,9 @@ class Contato:
         response = requests.get(url, json={"Nome": nome})
 
         if response.status_code == 200:
-            print('Contatos encontrados com sucesso!')
+            logger.log_info('Contatos encontrados com sucesso!', status=response.status_code, response=response.json())
             return response.json()
         elif response.status_code == 404:
-            print('Contatos não encontrados.')
+            logger.log_error('Contatos não encontrados.', status=response.status_code, response=response.json())
         else:
-            print(f'Erro ao encontrar os contatos:\n{response.json()}')
+            logger.log_critical("Erro ao encontrar os contatos", status=response.status_code, response=response.json())
