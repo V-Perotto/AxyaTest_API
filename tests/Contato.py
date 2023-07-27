@@ -39,6 +39,7 @@ class Contato:
 
         if response.status_code == 200:
             logger.log_info("Contato lido com sucesso!", status=response.status_code, response=response.json())
+            return response.json()
         elif response.status_code == 404:
             logger.log_error('Contato não encontrado.', status=response.status_code, response=response.json())
         else:

@@ -173,7 +173,32 @@ Após inserir os seguintes dados, execute a linha de comando abaixo em um termin
 python app.py 
 ```
 
-### Rodar os Tests
+## Rodar os Testes
+
+### Usando TDD com RobotFramework
+
+Para rodar os testes, acesse o diretório <code>TDD/</code> em um terminal separado.
+
+**IMPORTANTE**: A API deverá estar ativa para os testes funcionarem.
+
+Para rodar os testes via terminal, use:
+
+```
+robot test.robot
+```
+
+Seu retorno deverá ser igual a imagem abaixo: 
+
+<img src="img/robot/log.png" width="600"/>
+
+Para mais informações do _log_ detalhado do <code>RobotFramework</code>, acesse o **Log** no seu navegador.
+
+Ele deverá ser semelhante à imagem abaixo:
+
+<img src="img/robot/output.png" width="800"/>
+
+### Usando Python
+
 Para rodar os testes, acesse o diretório <code>tests/</code> em um terminal separado.
 
 **IMPORTANTE**: A API deverá estar ativa para os testes funcionarem.

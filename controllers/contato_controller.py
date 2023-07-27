@@ -57,7 +57,6 @@ def update_contato(id):
     try:
         data = request.json
         nome = data.get('Nome')
-        sobrenome = data.get('Sobrenome')
         email = data.get('Email')
         telefone = data.get('Telefone')
 
@@ -76,9 +75,6 @@ def update_contato(id):
         if nome:
             update_query += "Nome = %s, "
             update_values.append(nome)
-        if sobrenome:
-            update_query += "Sobrenome = %s, "
-            update_values.append(sobrenome)
         if email:
             update_query += "Email = %s, "
             update_values.append(email)

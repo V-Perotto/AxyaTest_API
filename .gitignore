@@ -3,3 +3,6 @@ __pycache__/
 tests/local_tests.py
 local_config.py
 unique.py
+TDD/*.html
+TDD/*.xml
+*.log
