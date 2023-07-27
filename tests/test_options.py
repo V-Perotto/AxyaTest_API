@@ -31,16 +31,14 @@ def option_read() -> None:
     sys.exit(1)
 
 def option_update(dados) -> None:
-    if len(sys.argv) == 7:
+    if len(sys.argv) == 6:
         if not "." in sys.argv[3]:
             dados['Nome'] = sys.argv[3]
         if not "." in sys.argv[4]:
-            dados['Sobrenome'] = sys.argv[4]
+            dados['Email'] = sys.argv[4]
         if not "." in sys.argv[5]:
-            dados['Email'] = sys.argv[5]
-        if not "." in sys.argv[6]:
-            dados['Telefone'] = sys.argv[6]
-        if sys.argv[3] == "." and sys.argv[4] == "." and sys.argv[5] == "." and sys.argv[6] == ".":
+            dados['Telefone'] = sys.argv[5]
+        if sys.argv[3] == "." and sys.argv[4] == "." and sys.argv[5] == ".":
             print("É necessário adicionar pelo menos 1 dado pra atualizar")
         else:
             response = Contato().update_contato(sys.argv[2], dados)
@@ -48,9 +46,9 @@ def option_update(dados) -> None:
                 Contato().read_contato(sys.argv[2])
     else:
         print("É necessário adicionar os dados:")
-        print(">_ update <Nome> e/ou <Sobrenome> e/ou <Email> e/ou <Telefone>\n")
+        print(">_ update <Nome> e/ou <Email> e/ou <Telefone>\n")
         print("Por exemplo, caso você queira somente atualizar Sobrenome e Telefone:")
-        print(""">_ update . <Sobrenome> . <Telefone>""")
+        print(""">_ update . . <Telefone>""")
     sys.exit(1)
 
 def option_delete() -> None:
